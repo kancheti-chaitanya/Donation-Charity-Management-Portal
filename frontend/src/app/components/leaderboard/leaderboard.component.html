@@ -1,0 +1,73 @@
+<div class="leaderboard-container">
+  <mat-toolbar color="primary" class="header">
+    <h1>Top Donors Leaderboard</h1>
+  </mat-toolbar>
+
+  <div class="content">
+    <div *ngIf="currentUser?.role === 'Donor' && userStats" class="user-stats-card">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Your Contributions</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-label">Total Contributions</span>
+              <span class="stat-value">{{ userStats.total_contributions }}</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Total Amount</span>
+              <span class="stat-value">{{ userStats.total_amount | currency }}</span>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div *ngIf="loading" class="loading">
+      <mat-spinner diameter="50"></mat-spinner>
+    </div>
+
+    <div *ngIf="!loading && leaderboard.length === 0" class="no-data">
+      <mat-icon>emoji_events</mat-icon>
+      <p>No leaderboard data available</p>
+    </div>
+
+    <div class="leaderboard-table" *ngIf="!loading && leaderboard.length > 0">
+      <table mat-table [dataSource]="leaderboard">
+        <ng-container matColumnDef="rank">
+          <th mat-header-cell *matHeaderCellDef>#</th>
+          <td mat-cell *matCellDef="let element">
+            <mat-icon *ngIf="element.rank === 1" class="medal gold">emoji_events</mat-icon>
+            <mat-icon *ngIf="element.rank === 2" class="medal silver">emoji_events</mat-icon>
+            <mat-icon *ngIf="element.rank === 3" class="medal bronze">emoji_events</mat-icon>
+            <span *ngIf="element.rank > 3">{{ element.rank }}</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Donor Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="contributions">
+          <th mat-header-cell *matHeaderCellDef>Total Contributions</th>
+          <td mat-cell *matCellDef="let element">{{ element.total_contributions }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef>Total Amount</th>
+          <td mat-cell *matCellDef="let element">{{ element.total_amount | currency }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['rank', 'name', 'contributions', 'amount']"></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: ['rank', 'name', 'contributions', 'amount'];"
+          [class.highlight]="row.rank <= 3"
+          @fadeIn
+        ></tr>
+      </table>
+    </div>
+  </div>
+</div>
