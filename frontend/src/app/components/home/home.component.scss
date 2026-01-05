@@ -1,45 +1,68 @@
+/* ================= HERO SECTION ================= */
+
 .hero-section {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 6rem 2rem;
+  background-image: url('/assets/hero-bg.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  min-height: 85vh;
+  color: #ffffff;
   text-align: center;
-  animation: slideDown 0.5s ease-out;
 
-  .hero-content {
-    max-width: 800px;
-    margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    h1 {
-      font-size: 3rem;
-      margin: 0 0 1rem 0;
-      font-weight: 300;
-    }
+  position: relative;
+}
 
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      opacity: 0.9;
-    }
+/* dark overlay for readability */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
 
-    .cta-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 2rem;
 
-      button {
-        padding: 0.75rem 2rem;
-        font-size: 1rem;
-        transition: all 0.3s ease;
+  h1 {
+    font-size: 3rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
 
-        &:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    button {
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
       }
     }
   }
 }
+
+/* ================= FEATURES SECTION ================= */
 
 .features-section {
   padding: 4rem 2rem;
@@ -61,11 +84,11 @@
   }
 
   .feature-card {
+    background: #ffffff;
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    animation: fadeIn 0.5s ease-out;
 
     &:hover {
       transform: translateY(-4px);
@@ -73,6 +96,7 @@
     }
 
     mat-icon {
+      display: block;
       font-size: 3rem;
       width: 3rem;
       height: 3rem;
@@ -93,9 +117,11 @@
   }
 }
 
+/* ================= ROLES SECTION ================= */
+
 .roles-section {
   padding: 4rem 2rem;
-  background: white;
+  background: #ffffff;
   text-align: center;
 
   h2 {
@@ -117,7 +143,6 @@
     border: 2px solid #ddd;
     border-radius: 8px;
     transition: all 0.3s ease;
-    animation: fadeIn 0.5s ease-out;
 
     &:hover {
       border-color: #667eea;
@@ -126,6 +151,7 @@
     }
 
     mat-icon {
+      display: block;
       font-size: 2.5rem;
       width: 2.5rem;
       height: 2.5rem;
@@ -149,7 +175,7 @@
         color: #666;
         border-bottom: 1px solid #eee;
 
-        &:before {
+        &::before {
           content: '✓ ';
           color: #4caf50;
           font-weight: bold;
@@ -161,25 +187,5 @@
         }
       }
     }
-  }
-}
-
-@keyframes slideDown {
-  from {
-    transform: translateY(-30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }
