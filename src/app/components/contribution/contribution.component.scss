@@ -1,0 +1,68 @@
+.contribution-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 2rem 1rem;
+}
+
+.contribution-card {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  animation: slideUp 0.5s ease-out;
+
+  mat-card-header {
+    margin-bottom: 2rem;
+  }
+
+  mat-card-title {
+    font-size: 1.8rem;
+    color: #333;
+  }
+
+  mat-card-subtitle {
+    color: #999;
+    font-size: 1rem;
+  }
+
+  mat-card-content {
+    padding: 2rem 1rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-field {
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,43 @@
+<mat-toolbar color="primary" class="navbar">
+  <button mat-icon-button routerLink="/">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <span class="title" routerLink="/">{{ title }}</span>
+  <span class="spacer"></span>
+
+  <div class="nav-menu">
+    <a mat-button routerLink="/donations" routerLinkActive="active">Browse Donations</a>
+    <a mat-button routerLink="/leaderboard" routerLinkActive="active">Leaderboard</a>
+
+    <div *ngIf="currentUser" class="user-menu">
+      <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle</mat-icon>
+        {{ currentUser.name }}
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item *ngIf="currentUser.role === 'NGO'" (click)="navigateToDashboard()">
+          <mat-icon>dashboard</mat-icon>
+          <span>NGO Dashboard</span>
+        </button>
+        <button mat-menu-item *ngIf="currentUser.role === 'Donor'" (click)="navigateToDashboard()">
+          <mat-icon>dashboard</mat-icon>
+          <span>My Donations</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+    </div>
+
+    <div *ngIf="!currentUser">
+      <a mat-raised-button color="accent" routerLink="/login">Login</a>
+      <a mat-raised-button color="accent" routerLink="/register" style="margin-left: 0.5rem;">
+        Register
+      </a>
+    </div>
+  </div>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

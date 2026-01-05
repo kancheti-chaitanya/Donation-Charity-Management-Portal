@@ -1,0 +1,66 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.3s ease-out;
+
+  .title {
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    a {
+      transition: all 0.3s ease;
+      text-decoration: none;
+
+      &.active {
+        color: #ffeb3b;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    .user-menu {
+      display: flex;
+      align-items: center;
+
+      button {
+        transition: all 0.3s ease;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

@@ -6,7 +6,7 @@ A full-stack web application that connects donors with verified NGOs for donatio
 
 This is a complete MEAN-like stack (but with Angular & TypeScript backend) application built with:
 
-- **Frontend**: Angular 16 with Angular Material
+- **Frontend**: Angular 18 with Angular Material
 - **Backend**: Node.js with Express and TypeScript
 - **Database**: MySQL
 - **Authentication**: JWT-based authentication
@@ -16,7 +16,7 @@ This is a complete MEAN-like stack (but with Angular & TypeScript backend) appli
 
 ```
 Donation-Charity-Management-Portal/
-├── frontend/                 # Angular 16 Application
+├── frontend/                 # Angular 18 Application
 │   ├── src/
 │   │   ├── app/
 │   │   │   ├── components/   # UI Components
@@ -323,7 +323,7 @@ npm test
 
 ## Technology Stack
 
-- **Frontend**: Angular 16, TypeScript, RxJS, Angular Material, SCSS
+- **Frontend**: Angular 18, TypeScript, RxJS, Angular Material, SCSS
 - **Backend**: Node.js, Express, TypeScript
 - **Database**: MySQL
 - **Authentication**: JWT, bcryptjs
